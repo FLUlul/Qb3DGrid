@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>My first three.js app</title>
-        <link rel="stylesheet" href="style.css">
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script> -->
-	</head>
-	<body>
-		<script src="node_modules/three/build/three.js"></script>
-		<script src="node_modules/threejs-meshline/src/index.js"></script>
-		<script src="line.js"></script>
-	</body>
-</html>
+<main></main>
+
+<script type="text/javascript">
+    const sse = new EventSource('server.php');
+    sse.onmessage = function(event) {
+        document.querySelector('main').innerHTML = '';
+        const data = JSON.parse(event.data);
+        console.log(data);
+        data.forEach((item) => {
+            const row = document.createElement('p');
+                  row.innerHTML = item;
+            document.querySelector('main').append(row);
+        });
+    };
+</script>

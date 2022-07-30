@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "three": "^0.142.0",
+    "threejs-meshline": "^2.0.12"
+  }
+}

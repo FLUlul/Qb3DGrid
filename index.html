@@ -1,15 +1,24 @@
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <main></main>
 
-<script type="text/javascript">
-    const sse = new EventSource('server.php');
-    sse.onmessage = function(event) {
-        document.querySelector('main').innerHTML = '';
-        const data = JSON.parse(event.data);
-        console.log(data);
-        data.forEach((item) => {
-            const row = document.createElement('p');
-                  row.innerHTML = item;
-            document.querySelector('main').append(row);
+<script>
+
+var file = 'three.json';
+
+$.ajaxSetup({
+    async: false
+});
+
+    function getData() {
+
+        fetch(file).then(res => res.json()).then(function (res) {
+            console.log(res.length)
+        }).catch(function() {
+            console.log('errore');
         });
-    };
+
+        setTimeout(getData, 10);
+    }
+
+getData(); // run once to start it
 </script>

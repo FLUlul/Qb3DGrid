@@ -33,17 +33,4 @@ $end = microtime(true) - $start;
 
 echo '<br><br>Tempo impiegato ' . $end;
 
-function printAll(array $array, int &$index = 0) {
-
-    $length = count($array);
-    if ($index < $length) {
-        echo $array[$index] . '<br>';
-        $index++;
-        if ($index == 5) {
-          dump($array[$index]);
-        }
-        printAll($array, $index);
-    }
-}
-printAll([1,2,3,4]);
 ?>

@@ -131,22 +131,7 @@
 
 			var file = 'data.json';
 			init();
-			console.log(splines);
-
-			fetch(file).then(res => res.json()).then(function (data) {
-				let count = data.length;
-				let i = 0;
-				setInterval(() => {
-					if (i < count) {
-						addSplineObject(data[i]);
-						updateSplineOutline();
-						render();
-						i++;
-					}
-				}, 10);
-			}).catch(function() {
-				console.error('errore');
-			});
+			getData();
 
 			function init() {
 
@@ -155,7 +140,7 @@
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xf0f0f0 );
 
-				camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera = new THREE.PerspectiveCamera( 5, window.innerWidth / window.innerHeight, 1, 10000 );
 				camera.position.set( 1, 250, 1000 );
 				scene.add( camera );
 
@@ -297,6 +282,24 @@
 
 				render();
 
+			}
+
+			function getData() {
+
+				fetch(file).then(res => res.json()).then(function (data) {
+					let count = data.length;
+					let i = 0;
+					setInterval(() => {
+						if (i < count) {
+							addSplineObject(data[i]);
+							updateSplineOutline();
+							render();
+							i++;
+						}
+					}, 10);
+				}).catch(function() {
+					console.error('errore');
+				});
 			}
 
 			function addSplineObject( position ) {

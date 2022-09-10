@@ -20,7 +20,7 @@ for ($i=0; $i < count($rows); $i++) {
     ftruncate($file);
     fwrite($file, $newData);
     fclose($file);
-    usleep(500);
+    usleep(4000);
 
     ob_implicit_flush(1);
     ob_start();

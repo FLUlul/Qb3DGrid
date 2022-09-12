@@ -10,7 +10,7 @@ $start = microtime(true);
 
 $data = [];
 for ($i=0; $i < count($rows); $i++) {
-    $file      = fopen('three.json', 'r+');
+    $file      = fopen('test-threejs/three.json', 'r+');
     $newData   = stream_get_contents($file);
     $newData   = json_decode($newData, true);
     $newData[] = $rows[$i];
